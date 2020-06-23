@@ -2,24 +2,36 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Watch from '../views/Watch.vue'
+import Teams from '../views/Teams.vue'
+import TeamDetail from '../views/TeamDetail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: '/highlight',
+    name: 'Highlight',
     component: Home
   },
   {
     path: '/highlight/:id',
-    name: 'Highlight',
+    name: 'HighlightVideo',
     component: Watch
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/Watch.vue')
-  }
+  },
+  {
+    path: '/teams',
+    name: 'Teams',
+    component: Teams
+  },
+  {
+    path: '/teams/:id',
+    name: 'TeamDetail',
+    component: TeamDetail
+  },
 ]
 
 const router = new VueRouter({

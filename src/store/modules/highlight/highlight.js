@@ -1,4 +1,4 @@
-import { __getLatestHighlights } from '../../services/api';
+import { __getLatestHighlights } from '../../../services/api';
 const state = {
     highlights: []
 }
