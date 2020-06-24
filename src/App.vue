@@ -29,6 +29,22 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+// DARK THEME
+$color-bg-1-dark: hsl(230, 17%, 14%); //BACKGROUND
+$color-bg-2-dark: hsl(232, 19%, 15%); //TOP BACKGROUND PATTERN
+$color-card-dark: hsl(228, 28%, 20%); //CARD BACKGROUND
+$color-text-dark: hsl(228, 34%, 66%); //TEXT
+$color-white-text-dark: hsl(0, 0%, 100%); //TEXT
+$color-hover-dark: #2f3552; //HOVER BG
+
+// LIGHT THEME
+$color-bg-1-light: hsl(0, 0%, 100%); //BACKGROUND
+$color-bg-2-light: hsl(225, 100%, 98%); //TOP BACKGROUND PATTERN
+$color-card-light: hsl(227, 47%, 96%); //CARD BACKGROUND
+$color-text-light: hsl(228, 12%, 44%); //TEXT
+$color-blue-text-light: hsl(230, 17%, 14%); //TEXT
+$color-hover-light: #e6e8f1; //HOVER
+
 *,
 *::before,
 *::after {
@@ -48,7 +64,17 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
   color: #333333;
-  background-color: #e1e1e1;
+  background-color: $color-bg-1-light;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18rem;
+    background-color: $color-bg-2-light;
+    z-index: -1;
+  }
 }
 
 .container {
@@ -69,15 +95,16 @@ a:visited {
 
 .title {
   line-height: 1.2;
+  font-weight: 600;
+  &__main {
+    font-size: 4.2rem;
+  }
   &__large {
     font-size: 3.2rem;
-    font-weight: 600;
     text-transform: uppercase;
-    text-align: center;
   }
   &____small {
     font-size: 2rem;
-    font-weight: 600;
   }
 }
 
@@ -186,6 +213,66 @@ a:visited {
         }
         p.parahraph {
           font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+.team {
+  &__header {
+    padding: 2.2rem 0;
+    .header__banner {
+      width: 100%;
+      padding-bottom: 12%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .header-box {
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 0.8rem;
+      .team__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 100%;
+        background-color: #ffffff;
+        margin-right: 2rem;
+        img {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+      .team__brief {
+        .title.title__main {
+          margin-bottom: 0.5rem;
+        }
+        ul.media {
+          display: flex;
+          align-items: center;
+          margin-top: 0.7rem;
+          li {
+            background-color: #ffffff;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:not(:last-child) {
+              margin-right: 1rem;
+            }
+            a {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
         }
       }
     }

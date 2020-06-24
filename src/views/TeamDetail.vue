@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <Team :team="teamData" />
   </div>
 </template>
