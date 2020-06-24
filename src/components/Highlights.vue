@@ -5,9 +5,13 @@
       <fragment v-for="(video,index) in highlights" :key="'video'+index">
         <li class="highlights-list__item">
           <router-link :to="{name:'HighlightVideo',params:{id:video.id}}">
-            <img :src="video.thumbnail" alt />
-            <h3 class="title title__small">{{video.title}}</h3>
-            <p class="paragraph">{{video.competition.name}}</p>
+            <div class="thumbnail">
+              <img :src="video.thumbnail" alt />
+            </div>
+            <div class="content">
+              <h3 class="title title__small">{{video.title}}</h3>
+              <p class="paragraph">{{video.competition.name}}</p>
+            </div>
           </router-link>
         </li>
       </fragment>

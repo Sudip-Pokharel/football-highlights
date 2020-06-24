@@ -9,7 +9,7 @@
           <li class="team__brief">
             <ul>
               <li>
-                <h2 class="title title__main">{{team.strAlternate}}</h2>
+                <h2 class="title title__main">{{team.strTeam}}</h2>
               </li>
               <li class="stadium-name">
                 <a href="#">{{team.strStadium}}</a>

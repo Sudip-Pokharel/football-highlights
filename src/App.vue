@@ -63,7 +63,7 @@ body {
   line-height: 1.7;
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
-  color: #333333;
+  color: $color-blue-text-light;
   background-color: $color-bg-1-light;
   &::before {
     content: "";
@@ -96,6 +96,8 @@ a:visited {
 .title {
   line-height: 1.2;
   font-weight: 600;
+  color: $color-blue-text-light;
+  font-weight: 600;
   &__main {
     font-size: 4.2rem;
   }
@@ -126,13 +128,35 @@ a:visited {
     display: flex;
     flex: 0 0 30rem;
     flex-direction: column;
+    background-color: $color-card-light;
+    border-radius: 0.5rem;
     margin: 1rem 3rem 2rem 0;
+    transition: 0.2s ease-in-out;
+    .title.title__small {
+      margin-bottom: 0.5rem;
+    }
     &:hover {
       cursor: pointer;
+      background-color: $color-hover-light;
+      overflow: hidden;
+      img {
+        transform: scale(1.03);
+      }
     }
-    img {
-      width: 100%;
+    .thumbnail {
       height: 22.5rem;
+      overflow: hidden;
+      img {
+        height: 100%;
+        width: 100%;
+        transition: 0.2s ease-in-out;
+      }
+    }
+    .content {
+      padding: 1rem;
+      p.paragraph {
+        color: $color-text-light;
+      }
     }
   }
 }
@@ -163,21 +187,40 @@ a:visited {
     justify-content: center;
     &__item {
       flex: 0 0 24rem;
-      .title.title__small {
-        font-size: 1.6rem;
+      background-color: $color-card-light;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        background-color: $color-hover-light;
       }
-      p.paragraph {
-        font-size: 1.3rem;
+      .thumbnail {
+        height: 17rem;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: 100%;
+          transition: 0.3s ease-in-out;
+        }
+      }
+      .content {
+        padding: 0.8rem;
+        text-align: center;
+        .title.title__small {
+          font-size: 1.6rem;
+        }
+        p.paragraph {
+          font-size: 1.3rem;
+        }
       }
       &:hover {
         cursor: pointer;
+        .thumbnail {
+          img {
+            transform: scale(1.03);
+          }
+        }
       }
       &:not(:last-child) {
         margin-right: 1.2rem;
-      }
-      img {
-        width: 100%;
-        height: 17rem;
       }
     }
   }
@@ -186,6 +229,7 @@ a:visited {
 .team-container {
   .title.title__large {
     margin-bottom: 2.2rem;
+    text-align: center;
   }
 }
 
@@ -196,6 +240,15 @@ a:visited {
     flex: 0 0 31%;
     margin: 1%;
     margin-bottom: 2rem;
+    padding: 0.8rem 0.5rem 0.8rem 1rem;
+    border-radius: 0.5rem;
+    background-color: $color-card-light;
+    transition: 0.2s ease-in-out;
+    border-left: 0.3rem solid transparent;
+    &:hover {
+      border-left: 0.3rem solid $color-hover-dark;
+      background-color: $color-hover-light;
+    }
     a {
       display: flex;
       align-items: center;
@@ -206,13 +259,15 @@ a:visited {
       .team-detail {
         padding-left: 1.2rem;
         .title.title__medium {
-          margin-bottom: 0.8rem;
+          margin-bottom: 0.4rem;
+          font-weight: 600;
         }
-        .title.title__small {
-          margin-bottom: 0.1rem;
-        }
-        p.parahraph {
+        .stadium-name {
           font-size: 1.4rem;
+          font-weight: 600;
+        }
+        p.paragraph {
+          font-size: 1.3rem;
         }
       }
     }
@@ -223,17 +278,18 @@ a:visited {
   &__header {
     padding: 2.2rem 0;
     .header__banner {
-      width: 100%;
+      width: 70%;
       padding-bottom: 12%;
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: left;
     }
     .header-box {
       display: flex;
       align-items: center;
       padding: 2rem;
       border-radius: 0.8rem;
+      margin-bottom: 4rem;
       .team__logo {
         display: flex;
         align-items: center;

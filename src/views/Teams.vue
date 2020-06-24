@@ -8,7 +8,7 @@
             <img :src="team.strTeamBadge" :alt="team.strTeam+' badge'" />
             <div class="team-detail">
               <h2 class="title title__medium">{{team.strTeam}}</h2>
-              <h3 class="title title__small">{{team.strStadium}}</h3>
+              <span class="stadium-name">{{team.strStadium}}</span>
               <p class="paragraph">{{team.strStadiumLocation}}</p>
             </div>
           </router-link>
