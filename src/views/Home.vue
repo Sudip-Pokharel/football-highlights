@@ -6,7 +6,7 @@
 
 <script>
 // @ is an alias to /src
-import Highlights from "@/components/Highlights.vue";
+import Highlights from "@/components/highlight/Highlights.vue";
 
 export default {
   name: "Home",

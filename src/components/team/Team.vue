@@ -71,20 +71,66 @@
             </ul>
           </li>
         </ul>
-        <div class="header__banner" :style="bannerBackgound"></div>
+        <ul class="groun-btn-box">
+          <li class="btn-item">
+            <a
+              href="#"
+              :class="view=='overview' ? 'active' : ''"
+              @click.prevent="view = 'overview'"
+            >Overview</a>
+          </li>
+          <li class="btn-item">
+            <a
+              href="#"
+              :class="view=='stadium' ? 'active' : ''"
+              @click.prevent="view = 'stadium'"
+            >Stadium</a>
+          </li>
+          <li class="btn-item">
+            <a
+              href="#"
+              :class="view=='jersey' ? 'active' : ''"
+              @click.prevent="view = 'jersey'"
+            >Jersey</a>
+          </li>
+          <li class="btn-item">
+            <a
+              href="#"
+              :class="view=='fanart' ? 'active' : ''"
+              @click.prevent="view = 'fanart'"
+            >Fanart</a>
+          </li>
+        </ul>
       </div>
     </header>
-    <!-- <img :src="team.strTeamBanner" alt />
-    <p class="paragraph">{{team.strDescriptionEN}}</p>
-    <img :src="team.strTeamFanart2" alt style="width:90%;" />-->
+    <Overview v-show="view == 'overview'" :team="team" />
+    <Stadium v-show="view == 'stadium'" :team="team" />
+    <Jersey v-show="view == 'jersey'" :team="team" />
+    <FanArt v-show="view == 'fanart'" :team="team" />
   </div>
 </template>
 
 <script>
+import Overview from "./Overview.vue";
+import Stadium from "./Stadium.vue";
+import Jersey from "./Jersey.vue";
+import FanArt from "./FanArt.vue";
+
 export default {
   name: "IndividualTeam",
   props: ["team"],
+  data() {
+    return {
+      view: "overview"
+    };
+  },
   methods: {},
+  components: {
+    Overview,
+    Stadium,
+    Jersey,
+    FanArt
+  },
   computed: {
     background: {
       get: function() {
@@ -94,13 +140,6 @@ export default {
             this.team.strStadiumThumb +
             ") no-repeat right",
           backgroundSize: "cover"
-        };
-      }
-    },
-    bannerBackgound: {
-      get: function() {
-        return {
-          backgroundImage: "url(" + this.team.strTeamBanner + ")"
         };
       }
     }

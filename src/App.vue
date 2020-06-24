@@ -5,6 +5,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+// import { __getTeamDetails } from "./services/api";
 export default {
   name: "App",
   data() {
@@ -13,6 +14,11 @@ export default {
     };
   },
   methods: {
+    // getTeamDetails() {
+    //   __getTeamDetails("bayern munich").then(response => {
+    //     console.log(response);
+    //   });
+    // },
     ...mapActions({
       fetchHighlights: "highlight/FETCH_HIGHLIGHTS"
     })
@@ -21,6 +27,7 @@ export default {
     this.fetchHighlights().then(() => {
       this.loading = false;
     });
+    // this.getTeamDetails();
   }
 };
 </script>
@@ -104,6 +111,9 @@ a:visited {
   &__large {
     font-size: 3.2rem;
     text-transform: uppercase;
+  }
+  &__medium {
+    font-size: 2.4rem;
   }
   &____small {
     font-size: 2rem;
@@ -277,19 +287,12 @@ a:visited {
 .team {
   &__header {
     padding: 2.2rem 0;
-    .header__banner {
-      width: 70%;
-      padding-bottom: 12%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: left;
-    }
+
     .header-box {
       display: flex;
       align-items: center;
       padding: 2rem;
       border-radius: 0.8rem;
-      margin-bottom: 4rem;
       .team__logo {
         display: flex;
         align-items: center;
@@ -330,6 +333,123 @@ a:visited {
             }
           }
         }
+      }
+    }
+
+    .groun-btn-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 44rem;
+      margin: -3rem 2rem 0 auto;
+      .btn-item {
+        a {
+          display: flex;
+          background-color: $color-card-light;
+          padding: 2rem 2.8rem;
+          transition: 0.2s ease-in-out;
+          color: $color-text-light;
+          text-transform: uppercase;
+          font-weight: 600;
+          &:hover {
+            background-color: $color-hover-light;
+          }
+          &.active {
+            color: $color-blue-text-light;
+            background-color: $color-bg-1-light;
+            box-shadow: 0 0.2rem 0.6rem -0.4rem rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+    }
+  }
+  article.overview {
+    .title.title__main {
+      margin-bottom: 1.2rem;
+      text-transform: capitalize;
+    }
+    .header__banner {
+      width: 100%;
+      padding-bottom: 20%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-bottom: 2rem;
+    }
+
+    .title.title__medium {
+      margin-bottom: 0.8rem;
+    }
+
+    .description-wrapper {
+      columns: 40rem;
+      column-gap: 8rem;
+      margin-bottom: 4rem;
+      p.paragraph {
+        font-size: 1.5rem;
+        line-height: 32px;
+      }
+    }
+
+    .team-logo {
+      width: 50rem;
+      margin: 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  article.stadium {
+    .title.title.title__main {
+      margin-bottom: 2rem;
+      text-transform: capitalize;
+    }
+    .title.title__small {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      svg {
+        margin-right: 0.7rem;
+      }
+    }
+    .image {
+      width: 100%;
+      margin-bottom: 0.7rem;
+      img {
+        width: 100%;
+      }
+    }
+    .description-wrapper {
+      columns: 40rem;
+      column-gap: 8rem;
+      margin-bottom: 4rem;
+      p.paragraph {
+        font-size: 1.5rem;
+        line-height: 32px;
+      }
+    }
+  }
+  article.jersey {
+    .title.title__main {
+      margin-bottom: 2rem;
+    }
+    .image {
+      width: 100%;
+      overflow: hidden;
+      img {
+        width: auto;
+      }
+    }
+  }
+  article.fanart {
+    .title.title__main {
+      margin-bottom: 2rem;
+    }
+    .image {
+      margin-bottom: 2rem;
+      width: 100%;
+      img {
+        width: 100%;
       }
     }
   }

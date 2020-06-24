@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Team from "@/components/Team.vue";
+import Team from "@/components/team/Team.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "TeamDetail",

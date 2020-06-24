@@ -15,8 +15,18 @@ async function __getLeagueTeams() {
     return response.data;
 }
 
+async function __getMatches() {
+    const response = await fetch('http://api.football-data.org/v2/competitions/PL/matches/?matchday=22', {
+        headers: {
+            'X-Auth-Token': '5e3d211e48664f47b64e4824e6814d84'
+        }
+    })
+    return response.json();
+}
+
 export {
     __getLatestHighlights,
     __getTeamDetails,
-    __getLeagueTeams
+    __getLeagueTeams,
+    __getMatches
 }

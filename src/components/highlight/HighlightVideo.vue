@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { __getTeamDetails } from "../services/api";
+import { __getTeamDetails } from "../../services/api";
 export default {
   name: "HighlightVideo",
   props: ["highlight", "others"],

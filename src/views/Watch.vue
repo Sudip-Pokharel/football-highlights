@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HighlightVideo from "@/components/HighlightVideo.vue";
+import HighlightVideo from "@/components/highlight/HighlightVideo.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "Watch",
