@@ -122,7 +122,8 @@ export default {
   props: ["team"],
   data() {
     return {
-      view: "overview"
+      view: "overview",
+      darkMode: true
     };
   },
   methods: {},
@@ -135,13 +136,23 @@ export default {
   computed: {
     background: {
       get: function() {
-        return {
-          background:
-            "linear-gradient(105deg,rgba(230,232,241, .95) 0%,rgba(230,232,241, 0.97) 50%,rgba(0, 0, 0, 0) 100%),url(" +
-            this.team.strStadiumThumb +
-            ") no-repeat right",
-          backgroundSize: "cover"
-        };
+        if (this.darkMode) {
+          return {
+            background:
+              "linear-gradient(105deg,rgba(0,0,0, .92) 0%,rgba(0,0,0, 0.86) 50%,rgba(0, 0, 0, 0) 100%),url(" +
+              this.team.strStadiumThumb +
+              ") no-repeat right",
+            backgroundSize: "cover"
+          };
+        } else {
+          return {
+            background:
+              "linear-gradient(105deg,rgba(230,232,241, .95) 0%,rgba(230,232,241, 0.97) 50%,rgba(0, 0, 0, 0) 100%),url(" +
+              this.team.strStadiumThumb +
+              ") no-repeat right",
+            backgroundSize: "cover"
+          };
+        }
       }
     },
     mobBackground: {

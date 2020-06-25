@@ -6,7 +6,7 @@
     </div>
     <div class="highlight-other" v-if="others.length">
       <div class="container">
-        <h3 class="title title__medium">Other highlights</h3>
+        <h3 class="title title__medium">Other Highlights</h3>
         <ul class="others-list">
           <fragment v-for="(other,index) in others" :key="'others-highlight'+index">
             <li class="others-list__item">

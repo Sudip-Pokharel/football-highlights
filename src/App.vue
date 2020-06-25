@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-if="!loading">
+  <div id="app">
     <router-view />
   </div>
 </template>
@@ -9,9 +9,7 @@ import { mapActions } from "vuex";
 export default {
   name: "App",
   data() {
-    return {
-      loading: true
-    };
+    return {};
   },
   methods: {
     // getTeamDetails() {
@@ -24,9 +22,7 @@ export default {
     })
   },
   created() {
-    this.fetchHighlights().then(() => {
-      this.loading = false;
-    });
+    this.fetchHighlights();
     // this.getTeamDetails();
   }
 };
@@ -94,6 +90,13 @@ body {
     background-color: $color-bg-2-light;
     z-index: -1;
   }
+  &.dark-mode {
+    color: $color-white-text-dark;
+    background-color: $color-bg-1-dark;
+    &::before {
+      background-color: $color-bg-2-dark;
+    }
+  }
 }
 
 .container {
@@ -109,7 +112,18 @@ ul {
 a:link,
 a:visited {
   text-decoration: none;
-  color: #333333;
+  color: $color-blue-text-light;
+}
+
+body.dark-mode {
+  .title {
+    color: $color-white-text-dark;
+  }
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: $color-white-text-dark;
+  }
 }
 
 .title {
@@ -173,6 +187,8 @@ a:visited {
     .thumbnail {
       height: 22.5rem;
       overflow: hidden;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
       @include media(375px) {
         height: auto;
       }
@@ -592,6 +608,91 @@ a:visited {
   }
   100% {
     width: 100%;
+  }
+}
+
+body.dark-mode {
+  .highlights-list {
+    &__item {
+      background-color: $color-card-dark;
+      &:hover {
+        background-color: $color-hover-dark;
+      }
+      .content {
+        p.paragraph {
+          color: $color-text-dark;
+        }
+      }
+    }
+  }
+  .highlight-other {
+    .others-list {
+      &__item {
+        background-color: $color-card-dark;
+        &:hover {
+          background-color: $color-hover-dark;
+        }
+        .content {
+          p.paragraph {
+            color: $color-text-dark;
+          }
+        }
+      }
+    }
+  }
+  .team-list {
+    &__item {
+      background-color: $color-card-dark;
+      &:hover {
+        border-left: 0.3rem solid $color-hover-light;
+        background-color: $color-hover-dark;
+      }
+      a {
+        .team-detail {
+          .stadium-name {
+            color: $color-text-dark;
+          }
+          p.paragraph {
+            color: $color-text-dark;
+          }
+        }
+      }
+    }
+  }
+  .team {
+    &__header {
+      .header-box {
+        @include media(580px) {
+          background: $color-card-dark !important;
+        }
+        .team__logo {
+          background-color: $color-card-dark;
+        }
+        .team__brief {
+          ul.media {
+            li {
+              background-color: $color-card-dark;
+            }
+          }
+        }
+      }
+      .groun-btn-box {
+        .btn-item {
+          a {
+            background-color: $color-card-dark;
+            color: $color-text-dark;
+            &:hover {
+              background-color: $color-hover-dark;
+            }
+            &.active {
+              color: $color-white-text-dark;
+              background-color: $color-bg-1-dark;
+              box-shadow: 0 0.2rem 0.6rem -0.4rem rgba($color-hover-dark, 0.9);
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>
