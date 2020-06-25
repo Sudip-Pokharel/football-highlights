@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     // getTeamDetails() {
-    //   __getTeamDetails("bayern munich").then(response => {
+    //   __getTeamDetails("monaco").then(response => {
     //     console.log(response);
     //   });
     // },
@@ -240,6 +240,10 @@ a:visited {
   .title.title__large {
     margin-bottom: 2.2rem;
     text-align: center;
+    &.loading {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 }
 
@@ -255,6 +259,29 @@ a:visited {
     background-color: $color-card-light;
     transition: 0.2s ease-in-out;
     border-left: 0.3rem solid transparent;
+    &.loading {
+      &:hover {
+        border-left: 0.3rem solid transparent;
+        background-color: $color-card-light;
+      }
+      position: relative;
+      min-height: 8rem;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: rgba($color-hover-light, 0.3);
+        animation: loading 1.6s infinite;
+      }
+      a {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
     &:hover {
       border-left: 0.3rem solid $color-hover-dark;
       background-color: $color-hover-light;
@@ -262,6 +289,7 @@ a:visited {
     a {
       display: flex;
       align-items: center;
+
       img {
         width: 8rem;
         height: 8rem;
@@ -392,7 +420,7 @@ a:visited {
     }
 
     .team-logo {
-      width: 50rem;
+      max-width: 50rem;
       margin: 0 auto;
       img {
         width: 100%;
@@ -452,6 +480,15 @@ a:visited {
         width: 100%;
       }
     }
+  }
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
   }
 }
 </style>

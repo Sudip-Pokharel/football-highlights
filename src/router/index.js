@@ -23,7 +23,7 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/Watch.vue')
   },
   {
-    path: '/teams',
+    path: '/teams/league/:leagueID',
     name: 'Teams',
     component: Teams
   },

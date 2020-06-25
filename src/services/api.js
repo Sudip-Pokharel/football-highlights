@@ -10,8 +10,8 @@ async function __getTeamDetails(name) {
     return response.data;
 }
 
-async function __getLeagueTeams() {
-    const response = await axios.get(`https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=4328`);
+async function __getLeagueTeams(leagueID) {
+    const response = await axios.get(`https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=${leagueID}`);
     return response.data;
 }
 

@@ -18,10 +18,15 @@ const mutations = {
 }
 
 const actions = {
-    FETCH_TEAMS(context) {
-        __getLeagueTeams().then(response => {
-            response.teams.forEach((team, index) => team.id = index + 1)
-            context.commit('SET_TEAMS', response.teams)
+    FETCH_TEAMS(context, data) {
+        return new Promise((resolve, reject) => {
+            __getLeagueTeams(data.id).then(response => {
+                response.teams.forEach((team, index) => team.id = index + 1)
+                context.commit('SET_TEAMS', response.teams)
+                return resolve(true)
+            }).catch(() => {
+                return reject(false)
+            })
         })
     }
 }

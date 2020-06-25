@@ -3,7 +3,7 @@
     <article class="stadium">
       <h2 class="title title__main">{{team.strStadium}}</h2>
 
-      <div class="image">
+      <div class="image" v-if="team.strStadiumThumb">
         <img :src="team.strStadiumThumb" :alt="team.strTeam+' stadium'" />
       </div>
 

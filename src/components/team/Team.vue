@@ -86,14 +86,14 @@
               @click.prevent="view = 'stadium'"
             >Stadium</a>
           </li>
-          <li class="btn-item">
+          <li class="btn-item" v-if="team.strTeamJersey">
             <a
               href="#"
               :class="view=='jersey' ? 'active' : ''"
               @click.prevent="view = 'jersey'"
             >Jersey</a>
           </li>
-          <li class="btn-item">
+          <li class="btn-item" v-if="team.strTeamFanart1">
             <a
               href="#"
               :class="view=='fanart' ? 'active' : ''"
