@@ -3,6 +3,7 @@
     <header class="team__header">
       <div class="container">
         <ul class="header-box" :style="background">
+          <li class="team__image" :style="mobBackground"></li>
           <li class="team__logo">
             <img :src="team.strTeamBadge" :alt="team.strTeam+' Badge'" />
           </li>
@@ -140,6 +141,13 @@ export default {
             this.team.strStadiumThumb +
             ") no-repeat right",
           backgroundSize: "cover"
+        };
+      }
+    },
+    mobBackground: {
+      get: function() {
+        return {
+          backgroundImage: "url(" + this.team.strStadiumThumb + ")"
         };
       }
     }

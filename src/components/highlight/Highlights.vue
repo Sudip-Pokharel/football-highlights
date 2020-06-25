@@ -1,7 +1,7 @@
 <template>
   <div class="container highlight-container">
     <h2 class="title title__large">Latest football highlights</h2>
-    <ul class="highlights-list">
+    <ul class="highlights-list" :key="'all-highlight-list'+unique_key">
       <fragment v-for="(video,index) in highlights" :key="'video'+index">
         <li class="highlights-list__item">
           <router-link :to="{name:'HighlightVideo',params:{id:video.id}}">
@@ -25,8 +25,13 @@ export default {
   name: "Highlights",
   data() {
     return {
-      videos: []
+      unique_key: 0
     };
+  },
+  watch: {
+    highlights() {
+      this.unique_key += 1;
+    }
   },
   methods: {},
   computed: {

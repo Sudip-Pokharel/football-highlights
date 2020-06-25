@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Highlights from '../views/Highlights.vue'
 import Watch from '../views/Watch.vue'
 import Teams from '../views/Teams.vue'
 import TeamDetail from '../views/TeamDetail.vue'
@@ -9,9 +9,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/highlight',
+    path: '/highlights',
     name: 'Highlight',
-    component: Home
+    component: Highlights
   },
   {
     path: '/highlight/:id',

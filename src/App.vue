@@ -52,6 +52,18 @@ $color-text-light: hsl(228, 12%, 44%); //TEXT
 $color-blue-text-light: hsl(230, 17%, 14%); //TEXT
 $color-hover-light: #e6e8f1; //HOVER
 
+@mixin media($breaking-point) {
+  @media (max-width: $breaking-point) {
+    @content;
+  }
+}
+
+@mixin min-media($breaking-point) {
+  @media (min-width: $breaking-point) {
+    @content;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -142,6 +154,11 @@ a:visited {
     border-radius: 0.5rem;
     margin: 1rem 3rem 2rem 0;
     transition: 0.2s ease-in-out;
+    @include media(375px) {
+      flex-basis: 98%;
+      margin-left: 0;
+      margin-right: 0;
+    }
     .title.title__small {
       margin-bottom: 0.5rem;
     }
@@ -156,6 +173,9 @@ a:visited {
     .thumbnail {
       height: 22.5rem;
       overflow: hidden;
+      @include media(375px) {
+        height: auto;
+      }
       img {
         height: 100%;
         width: 100%;
@@ -199,12 +219,25 @@ a:visited {
       flex: 0 0 24rem;
       background-color: $color-card-light;
       transition: 0.2s ease-in-out;
+      &:not(:last-child) {
+        margin-right: 1.2rem;
+      }
       &:hover {
         background-color: $color-hover-light;
+      }
+      @include media(375px) {
+        flex-basis: 98%;
+        &:not(:last-child) {
+          margin-bottom: 2rem;
+          margin-right: 0;
+        }
       }
       .thumbnail {
         height: 17rem;
         overflow: hidden;
+        @include media(375px) {
+          height: auto;
+        }
         img {
           height: 100%;
           width: 100%;
@@ -228,9 +261,6 @@ a:visited {
             transform: scale(1.03);
           }
         }
-      }
-      &:not(:last-child) {
-        margin-right: 1.2rem;
       }
     }
   }
@@ -259,6 +289,13 @@ a:visited {
     background-color: $color-card-light;
     transition: 0.2s ease-in-out;
     border-left: 0.3rem solid transparent;
+    @include media(991px) {
+      flex: 0 0 48%;
+    }
+    @include media(680px) {
+      flex: 0 0 98%;
+      justify-content: center;
+    }
     &.loading {
       &:hover {
         border-left: 0.3rem solid transparent;
@@ -280,6 +317,13 @@ a:visited {
         display: none;
         opacity: 0;
         visibility: hidden;
+      }
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          &::before {
+            animation-delay: #{$i * 50}ms;
+          }
+        }
       }
     }
     &:hover {
@@ -321,6 +365,27 @@ a:visited {
       align-items: center;
       padding: 2rem;
       border-radius: 0.8rem;
+      @include media(580px) {
+        position: relative;
+        flex-direction: column;
+        padding: 0 0 2rem;
+        background: $color-card-light !important;
+        text-align: center;
+      }
+      .team__image {
+        width: 100%;
+        padding-bottom: 20rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: none;
+        @include media(580px) {
+          display: list-item;
+        }
+        img {
+          width: 100%;
+        }
+      }
       .team__logo {
         display: flex;
         align-items: center;
@@ -334,15 +399,38 @@ a:visited {
           width: 10rem;
           height: 10rem;
         }
+        @include media(580px) {
+          position: absolute;
+          top: 14rem;
+          width: 12rem;
+          height: 12rem;
+          margin-right: 0;
+          img {
+            width: 8rem;
+            height: 8rem;
+          }
+        }
       }
       .team__brief {
+        @include media(580px) {
+          padding-top: 7.2rem;
+        }
         .title.title__main {
           margin-bottom: 0.5rem;
+        }
+        .official-website {
+          a {
+            text-decoration: underline;
+          }
         }
         ul.media {
           display: flex;
           align-items: center;
           margin-top: 0.7rem;
+          @include media(580px) {
+            margin-top: 1rem;
+            justify-content: center;
+          }
           li {
             background-color: #ffffff;
             width: 4rem;
@@ -368,11 +456,26 @@ a:visited {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 44rem;
+      max-width: 44rem;
       margin: -3rem 2rem 0 auto;
+      transition: 0.2s ease-in-out;
+      @include media(991px) {
+        margin-top: 0rem;
+      }
+      @include media(580px) {
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: auto;
+      }
       .btn-item {
+        transition: 0.2s ease-in-out;
+        @include media(580px) {
+          flex: 0 0 48%;
+          margin: 0.4rem;
+        }
         a {
-          display: flex;
+          display: block;
+          text-align: center;
           background-color: $color-card-light;
           padding: 2rem 2.8rem;
           transition: 0.2s ease-in-out;

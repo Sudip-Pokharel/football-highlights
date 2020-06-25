@@ -9,7 +9,7 @@
 import Highlights from "@/components/highlight/Highlights.vue";
 
 export default {
-  name: "Home",
+  name: "AllHighlights",
   components: {
     Highlights
   }

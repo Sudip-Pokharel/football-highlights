@@ -1,6 +1,7 @@
 import { __getLatestHighlights } from '../../../services/api';
+const highlights = localStorage.getItem(btoa("HIGHLIGHTS"));
 const state = {
-    highlights: []
+    highlights: highlights ? JSON.parse(highlights) : []
 }
 
 const getters = {
@@ -9,6 +10,7 @@ const getters = {
 
 const mutations = {
     SET_HIGHLIGHTS(state, payload) {
+        localStorage.setItem(btoa('HIGHLIGHTS'), JSON.stringify(payload));
         state.highlights = payload
     }
 }

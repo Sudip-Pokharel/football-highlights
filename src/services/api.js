@@ -24,6 +24,11 @@ async function __getMatches() {
     return response.json();
 }
 
+// https://official-joke-api.appspot.com/jokes/programming/random
+// https://official-joke-api.appspot.com/jokes/programming/ten
+// https://rickandmortyapi.com/api/character/
+// https://rickandmortyapi.com/api/location/
+
 export {
     __getLatestHighlights,
     __getTeamDetails,
