@@ -1,29 +1,44 @@
 <template>
   <div id="app">
+    <a href @click.prevent="updateTheme()">Click Me</a>
     <router-view />
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
-// import { __getTeamDetails } from "./services/api";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "App",
   data() {
     return {};
   },
   methods: {
-    // getTeamDetails() {
-    //   __getTeamDetails("monaco").then(response => {
-    //     console.log(response);
-    //   });
-    // },
+    updateTheme() {
+      this.updateMode({ state: !this.darkMode.state });
+      this.checkDarkMode();
+    },
+    checkDarkMode() {
+      if (this.darkMode.state) {
+        document.querySelector("body").classList.add("dark-mode");
+      } else {
+        document.querySelector("body").classList.remove("dark-mode");
+      }
+    },
+    init() {
+      this.checkDarkMode();
+      this.fetchHighlights();
+    },
     ...mapActions({
-      fetchHighlights: "highlight/FETCH_HIGHLIGHTS"
+      fetchHighlights: "highlight/FETCH_HIGHLIGHTS",
+      updateMode: "state/UPDATE_DARK_MODE"
+    })
+  },
+  computed: {
+    ...mapGetters({
+      darkMode: "state/DARK_MODE"
     })
   },
   created() {
-    this.fetchHighlights();
-    // this.getTeamDetails();
+    this.init();
   }
 };
 </script>
@@ -327,7 +342,7 @@ body.dark-mode {
         width: 0%;
         height: 100%;
         background-color: rgba($color-hover-light, 0.3);
-        animation: loading 1.6s infinite;
+        animation: loading 3.2s infinite;
       }
       a {
         display: none;
@@ -337,7 +352,7 @@ body.dark-mode {
       @for $i from 1 through 20 {
         &:nth-child(#{$i}) {
           &::before {
-            animation-delay: #{$i * 50}ms;
+            animation-delay: #{$i * 100}ms;
           }
         }
       }
@@ -557,6 +572,9 @@ body.dark-mode {
       margin-bottom: 2rem;
       svg {
         margin-right: 0.7rem;
+        path {
+          fill: $color-blue-text-light;
+        }
       }
     }
     .image {
@@ -606,8 +624,11 @@ body.dark-mode {
   0% {
     width: 0%;
   }
-  100% {
+  50% {
     width: 100%;
+  }
+  100% {
+    width: 0%;
   }
 }
 
@@ -640,9 +661,19 @@ body.dark-mode {
       }
     }
   }
+
   .team-list {
     &__item {
       background-color: $color-card-dark;
+      &.loading {
+        &:hover {
+          border-color: transparent;
+          background-color: $color-card-dark;
+        }
+        &::before {
+          background-color: rgba($color-hover-dark, 0.3);
+        }
+      }
       &:hover {
         border-left: 0.3rem solid $color-hover-light;
         background-color: $color-hover-dark;
@@ -689,6 +720,15 @@ body.dark-mode {
               background-color: $color-bg-1-dark;
               box-shadow: 0 0.2rem 0.6rem -0.4rem rgba($color-hover-dark, 0.9);
             }
+          }
+        }
+      }
+    }
+    article.stadium {
+      .title.title__small {
+        svg {
+          path {
+            fill: $color-white-text-dark;
           }
         }
       }

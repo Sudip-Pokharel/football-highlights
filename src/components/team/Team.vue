@@ -116,17 +116,16 @@ import Overview from "./Overview.vue";
 import Stadium from "./Stadium.vue";
 import Jersey from "./Jersey.vue";
 import FanArt from "./FanArt.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "IndividualTeam",
   props: ["team"],
   data() {
     return {
-      view: "overview",
-      darkMode: true
+      view: "overview"
     };
   },
-  methods: {},
   components: {
     Overview,
     Stadium,
@@ -136,7 +135,7 @@ export default {
   computed: {
     background: {
       get: function() {
-        if (this.darkMode) {
+        if (this.darkMode.state) {
           return {
             background:
               "linear-gradient(105deg,rgba(0,0,0, .92) 0%,rgba(0,0,0, 0.86) 50%,rgba(0, 0, 0, 0) 100%),url(" +
@@ -161,7 +160,10 @@ export default {
           backgroundImage: "url(" + this.team.strStadiumThumb + ")"
         };
       }
-    }
+    },
+    ...mapGetters({
+      darkMode: "state/DARK_MODE"
+    })
   }
 };
 </script>
