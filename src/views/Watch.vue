@@ -30,7 +30,7 @@ export default {
         let count = 0;
         this.otherData = [];
         this.highlights.filter(highlight => {
-          if (count < 3 && highlight.id != Number(this.$route.params.id)) {
+          if (count < 4 && highlight.id != Number(this.$route.params.id)) {
             count += 1;
             this.otherData.push(highlight);
           }

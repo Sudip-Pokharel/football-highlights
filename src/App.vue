@@ -1,44 +1,27 @@
 <template>
   <div id="app">
-    <a href @click.prevent="updateTheme()">Click Me</a>
+    <Header />
     <router-view />
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
+import Header from "./components/Header.vue";
 export default {
   name: "App",
   data() {
     return {};
   },
   methods: {
-    updateTheme() {
-      this.updateMode({ state: !this.darkMode.state });
-      this.checkDarkMode();
-    },
-    checkDarkMode() {
-      if (this.darkMode.state) {
-        document.querySelector("body").classList.add("dark-mode");
-      } else {
-        document.querySelector("body").classList.remove("dark-mode");
-      }
-    },
-    init() {
-      this.checkDarkMode();
-      this.fetchHighlights();
-    },
     ...mapActions({
-      fetchHighlights: "highlight/FETCH_HIGHLIGHTS",
-      updateMode: "state/UPDATE_DARK_MODE"
+      fetchHighlights: "highlight/FETCH_HIGHLIGHTS"
     })
   },
-  computed: {
-    ...mapGetters({
-      darkMode: "state/DARK_MODE"
-    })
+  components: {
+    Header
   },
   created() {
-    this.init();
+    this.fetchHighlights();
   }
 };
 </script>
@@ -101,7 +84,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 18rem;
+    height: 22rem;
     background-color: $color-bg-2-light;
     z-index: -1;
   }
@@ -161,8 +144,64 @@ body.dark-mode {
   }
 }
 
+.header-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 3rem;
+  .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5rem;
+    &__item {
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+    &__link {
+      padding: 1rem;
+      text-transform: uppercase;
+      display: flex;
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+      transition: 0.2s ease-in-out;
+      font-weight: 600;
+      &:hover {
+        color: $color-text-light;
+      }
+    }
+  }
+  #themeChanger {
+    display: none;
+  }
+  label {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    font-size: 1.4rem;
+    transition: 0.2s ease-in-out;
+    svg {
+      margin-right: 0.5rem;
+      path {
+        transition: 0.2s ease-in-out;
+        stroke: $color-blue-text-light;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      color: $color-text-light;
+      svg {
+        path {
+          stroke: $color-text-light;
+        }
+      }
+    }
+  }
+}
+
 .main {
-  padding: 5rem 0;
+  padding: 2rem 0 5rem;
 }
 
 .highlight-container {
@@ -177,7 +216,7 @@ body.dark-mode {
   flex-wrap: wrap;
   &__item {
     display: flex;
-    flex: 0 0 30rem;
+    flex: 0 0 26rem;
     flex-direction: column;
     background-color: $color-card-light;
     border-radius: 0.5rem;
@@ -229,7 +268,7 @@ body.dark-mode {
     font-size: 3.2rem;
   }
   .video-box {
-    max-width: 74rem;
+    max-width: 100rem;
     margin: 0 auto;
   }
 }
@@ -250,18 +289,12 @@ body.dark-mode {
       flex: 0 0 24rem;
       background-color: $color-card-light;
       transition: 0.2s ease-in-out;
-      &:not(:last-child) {
-        margin-right: 1.2rem;
-      }
+      margin: 0 1.2rem 1.6rem;
       &:hover {
         background-color: $color-hover-light;
       }
       @include media(375px) {
         flex-basis: 98%;
-        &:not(:last-child) {
-          margin-bottom: 2rem;
-          margin-right: 0;
-        }
       }
       .thumbnail {
         height: 17rem;
@@ -633,6 +666,31 @@ body.dark-mode {
 }
 
 body.dark-mode {
+  .header-container {
+    .navigation {
+      &__link {
+        &:hover {
+          color: $color-text-dark;
+        }
+      }
+    }
+
+    label {
+      svg {
+        path {
+          stroke: $color-white-text-dark;
+        }
+      }
+      &:hover {
+        color: $color-text-dark;
+        svg {
+          path {
+            stroke: $color-text-dark;
+          }
+        }
+      }
+    }
+  }
   .highlights-list {
     &__item {
       background-color: $color-card-dark;
@@ -697,12 +755,12 @@ body.dark-mode {
           background: $color-card-dark !important;
         }
         .team__logo {
-          background-color: $color-card-dark;
+          background-color: $color-bg-1-dark;
         }
         .team__brief {
           ul.media {
             li {
-              background-color: $color-card-dark;
+              background-color: $color-bg-1-dark;
             }
           }
         }

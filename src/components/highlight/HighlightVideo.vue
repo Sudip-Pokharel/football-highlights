@@ -28,23 +28,11 @@
 </template>
 
 <script>
-import { __getTeamDetails } from "../../services/api";
 export default {
   name: "HighlightVideo",
   props: ["highlight", "others"],
   data() {
     return {};
-  },
-  methods: {
-    getTeamDetails() {
-      __getTeamDetails(this.highlight.side1.name)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
   }
 };
 </script>

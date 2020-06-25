@@ -30,11 +30,20 @@ export default {
     };
   },
   watch: {
+    "$route.params.leagueID"() {
+      this.getTeams();
+    },
     teams() {
       this.unique_key += 1;
     }
   },
   methods: {
+    getTeams() {
+      this.loading = true;
+      this.fetchTeams({ id: this.$route.params.leagueID }).then(() => {
+        this.loading = false;
+      });
+    },
     ...mapActions({
       fetchTeams: "team/FETCH_TEAMS"
     })
@@ -43,11 +52,9 @@ export default {
     // 4331->germany
     // 4335->spain
     // 4328->england
-    // 4331->italy
+    // 4332->italy
     // 4334->franch
-    this.fetchTeams({ id: this.$route.params.leagueID }).then(() => {
-      this.loading = false;
-    });
+    this.getTeams();
   },
   computed: {
     ...mapGetters({
