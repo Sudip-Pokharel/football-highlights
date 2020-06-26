@@ -96,7 +96,7 @@ body {
     }
   }
   &.menu-open {
-    @include media(768px) {
+    @include media(991px) {
       overflow: hidden;
     }
   }
@@ -150,7 +150,7 @@ body.dark-mode {
 }
 
 body.menu-open {
-  @include media(768px) {
+  @include media(991px) {
     .header-wrapper {
       #mobileNav {
         display: flex;
@@ -265,7 +265,7 @@ body.menu-open {
     align-items: center;
     .menu-trigger--open,
     .menu-trigger--close {
-      @include min-media(769px) {
+      @include min-media(992px) {
         display: none;
       }
       a {
@@ -289,7 +289,7 @@ body.menu-open {
       &:last-child {
         margin-left: 3rem;
       }
-      @include media(768px) {
+      @include media(991px) {
         display: none;
       }
     }
