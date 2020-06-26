@@ -32,6 +32,7 @@ export default {
   watch: {
     "$route.params.leagueID"() {
       this.getTeams();
+      document.querySelector("body").classList.remove("menu-open");
     },
     teams() {
       this.unique_key += 1;
@@ -55,6 +56,7 @@ export default {
     // 4332->italy
     // 4334->franch
     this.getTeams();
+    document.querySelector("body").classList.remove("menu-open");
   },
   computed: {
     ...mapGetters({

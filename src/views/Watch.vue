@@ -50,6 +50,7 @@ export default {
   },
   created() {
     this.getDatas();
+    document.querySelector("body").classList.remove("menu-open");
   }
 };
 </script>

@@ -34,6 +34,7 @@ export default {
   },
   created() {
     this.getTeam();
+    document.querySelector("body").classList.remove("menu-open");
   },
   computed: {
     ...mapGetters({

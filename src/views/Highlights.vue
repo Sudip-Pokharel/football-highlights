@@ -12,6 +12,9 @@ export default {
   name: "AllHighlights",
   components: {
     Highlights
+  },
+  created() {
+    document.querySelector("body").classList.remove("menu-open");
   }
 };
 </script>

@@ -38,8 +38,7 @@ export default {
     ...mapGetters({
       highlights: "highlight/HIGHLIGHTS"
     })
-  },
-  created() {}
+  }
 };
 </script>
 
