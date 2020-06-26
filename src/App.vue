@@ -640,6 +640,7 @@ body.menu-open {
       }
       @include media(580px) {
         flex-wrap: wrap;
+        justify-content: center;
         max-width: 100%;
         margin-right: auto;
       }
@@ -745,9 +746,8 @@ body.menu-open {
     }
     .image {
       width: 100%;
-      overflow: hidden;
       img {
-        width: auto;
+        width: 100%;
       }
     }
   }
