@@ -535,7 +535,6 @@ body.menu-open {
 .team {
   &__header {
     padding: 2.2rem 0;
-
     .header-box {
       display: flex;
       align-items: center;
@@ -597,6 +596,10 @@ body.menu-open {
         .official-website {
           a {
             text-decoration: underline;
+            transition: 0.2s ease-in-out;
+            &:hover {
+              letter-spacing: 0.03rem;
+            }
           }
         }
         ul.media {
@@ -615,6 +618,9 @@ body.menu-open {
             display: flex;
             justify-content: center;
             align-items: center;
+            &:hover {
+              animation: slideUp 0.4s;
+            }
             &:not(:last-child) {
               margin-right: 1rem;
             }
