@@ -211,7 +211,7 @@ body.menu-open {
       }
       .theme-changer-box {
         position: absolute;
-        bottom: 4rem;
+        bottom: 15%;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -364,6 +364,20 @@ body.menu-open {
         transition: 0.2s ease-in-out;
       }
     }
+
+    .thumbnail.loading {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: rgba($color-hover-light, 0.3);
+        animation: loading 3.2s infinite;
+      }
+    }
     .content {
       padding: 1rem;
       p.paragraph {
@@ -402,6 +416,7 @@ body.menu-open {
       background-color: $color-card-light;
       transition: 0.2s ease-in-out;
       margin: 0 1.2rem 1.6rem;
+      border-radius: 0.5rem;
       &:hover {
         background-color: $color-hover-light;
       }
@@ -411,6 +426,8 @@ body.menu-open {
       .thumbnail {
         height: 17rem;
         overflow: hidden;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
         @include media(375px) {
           height: auto;
         }

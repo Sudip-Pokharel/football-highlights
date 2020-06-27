@@ -5,13 +5,13 @@
       <fragment v-for="(video,index) in highlights" :key="'video'+index">
         <li class="highlights-list__item">
           <router-link :to="{name:'HighlightVideo',params:{id:video.id}}">
-            <div class="thumbnail">
-              <img :src="video.thumbnail" alt />
-            </div>
-            <div class="content">
-              <h3 class="title title__small">{{video.title}}</h3>
-              <p class="paragraph">{{video.competition.name}}</p>
-            </div>
+            <figure>
+              <ImageItem :source="video.thumbnail" :alternate="video.title" />
+              <figcaption class="content">
+                <h3 class="title title__small">{{video.title}}</h3>
+                <p class="paragraph">{{video.competition.name}}</p>
+              </figcaption>
+            </figure>
           </router-link>
         </li>
       </fragment>
@@ -21,6 +21,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import ImageItem from "../ImageItem.vue";
 export default {
   name: "Highlights",
   data() {
@@ -34,6 +35,9 @@ export default {
     }
   },
   methods: {},
+  components: {
+    ImageItem
+  },
   computed: {
     ...mapGetters({
       highlights: "highlight/HIGHLIGHTS"

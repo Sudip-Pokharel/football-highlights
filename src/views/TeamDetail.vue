@@ -34,6 +34,7 @@ export default {
   },
   created() {
     this.getTeam();
+    window.scrollTo(0, 0);
     document.querySelector("body").classList.remove("menu-open");
   },
   computed: {
