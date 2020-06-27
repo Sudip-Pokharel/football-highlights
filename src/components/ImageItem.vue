@@ -1,6 +1,6 @@
 <template>
-  <div class="thumbnail">
-    <img :data-url="source" src :alt="alternate" />
+  <div class="thumbnail loading" v-lazyload>
+    <img :data-url="source" :alt="alternate" />
   </div>
 </template>
 

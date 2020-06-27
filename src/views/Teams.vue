@@ -4,8 +4,8 @@
     <ul class="team-list" :key="'all-team'+unique_key">
       <fragment v-for="(team,index) in teams" :key="'team-list-item'+index">
         <li :class=" loading ?  'team-list__item loading' : 'team-list__item'">
-          <router-link :to="{name:'TeamDetail',params:{id:team.id}}">
-            <img :src="team.strTeamBadge" :alt="team.strTeam+' badge'" />
+          <router-link :to="{name:'TeamDetail',params:{id:team.id}}" v-lazyload class="loading">
+            <img :data-url="team.strTeamBadge" :alt="team.strTeam+' badge'" />
             <div class="team-detail">
               <h2 class="title title__medium">{{team.strTeam}}</h2>
               <span class="stadium-name">{{team.strStadium}}</span>

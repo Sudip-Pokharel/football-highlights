@@ -363,21 +363,24 @@ body.menu-open {
         width: 100%;
         transition: 0.2s ease-in-out;
       }
-    }
-
-    .thumbnail.loading {
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
-        background-color: rgba($color-hover-light, 0.3);
-        animation: loading 3.2s infinite;
+      &.loading {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 100%;
+          background-color: rgba($color-hover-light, 0.3);
+          animation: loading 3.2s infinite;
+        }
+        img {
+          display: none;
+        }
       }
     }
+
     .content {
       padding: 1rem;
       p.paragraph {
@@ -530,6 +533,11 @@ body.menu-open {
       img {
         width: 8rem;
         height: 8rem;
+      }
+      &.loading {
+        img {
+          display: none;
+        }
       }
       .team-detail {
         padding-left: 1.2rem;
@@ -872,6 +880,13 @@ body.dark-mode {
       background-color: $color-card-dark;
       &:hover {
         background-color: $color-hover-dark;
+      }
+      .thumbnail {
+        &.loading {
+          &::before {
+            background-color: rgba($color-hover-dark, 0.3);
+          }
+        }
       }
       .content {
         p.paragraph {

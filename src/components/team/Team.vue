@@ -146,7 +146,7 @@ export default {
         } else {
           return {
             background:
-              "linear-gradient(105deg,rgba(230,232,241, .95) 0%,rgba(230,232,241, 0.97) 50%,rgba(0, 0, 0, 0) 100%),url(" +
+              "linear-gradient(105deg,rgba(230,232,241, .92) 0%,rgba(230,232,241, 0.86) 50%,rgba(0, 0, 0, 0) 100%),url(" +
               this.team.strStadiumThumb +
               ") no-repeat right",
             backgroundSize: "cover"
